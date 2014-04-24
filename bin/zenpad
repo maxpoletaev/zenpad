@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+var pkg = require('../package.json');
+var zenpad = require('../lib/zenpad');
+var program = require('commander');
+
+program
+  .version(pkg.version)
+  .parse(process.argv);
+
+require('../lib/cli/build')(program);
+
+if (!program.args.length) {
+  program.outputHelp();
+}
+
+program.parse(process.argv);
